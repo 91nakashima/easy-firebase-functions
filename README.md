@@ -15,7 +15,7 @@ easySetData({
   collection: 'anime',
   doc: {
     title: 'ナルト',
-    Character: ['ナルト', 'サスケ', 'サクラ'],
+    character: ['ナルト', 'サスケ', 'サクラ'],
     }
 })
 ```
@@ -27,7 +27,7 @@ easySetData({
   collection: 'anime/*****/animeDetail',
   doc: {
     title: 'ナルト',
-    Character: ['ナルト', 'サスケ', 'サクラ'],
+    character: ['ナルト', 'サスケ', 'サクラ'],
     id: '*****'
     }
 })
