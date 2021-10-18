@@ -1,6 +1,6 @@
 {
   "name": "easy-firebase-functions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -16,6 +16,8 @@
     "type": "git",
     "url": "git@github.com.inc:91nakashima/easy-firebase-functions"
   },
-  "keywords": [""],
+  "keywords": [
+    ""
+  ],
   "author": "91nakashima"
 }
