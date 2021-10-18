@@ -6,7 +6,7 @@ const admin = require('firebase-admin')
  * @param {*} - data
  * @return {string} - id
  */
-function easySetData (data) {
+async function easySetData (data) {
   /** idをreturnする */
   let returnId = ''
   /** Path */
@@ -62,4 +62,4 @@ function easySetData (data) {
   return returnId
 }
 
-exports.easySetData
+exports.easySetData = easySetData
