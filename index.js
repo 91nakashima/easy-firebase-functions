@@ -1,12 +1,14 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 
+admin.initializeApp(functions.config().firebase)
+
 /**
  * easySetData
  * @param {*} - data
  * @return {string} - id
  */
-async function easySetData (data) {
+async function easySetDoc (data) {
   /** idをreturnする */
   let returnId = ''
   /** Path */
@@ -62,4 +64,4 @@ async function easySetData (data) {
   return returnId
 }
 
-exports.easySetData = easySetData
+exports.easySetDoc = easySetDoc

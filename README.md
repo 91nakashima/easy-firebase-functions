@@ -20,6 +20,11 @@ easySetData({
 
 # おまけ
 
-ドキュメントに下記が追加される
-created_at: 時間
-id: document id
+下記が作成したドキュメントに自動追加される
+
+```bash
+{
+  created_at: new Date(),
+  id: document id
+}
+```
