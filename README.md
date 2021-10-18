@@ -6,8 +6,7 @@ npm install easy-firebase-functions
 
 # 使い方
 
-登録と更新ができます。
-doc に id を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。
+`登録と更新ができます。 doc に id を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。`
 
 ```bash
 const { easySetData } = require('easy-firebase-functions')
@@ -25,10 +24,11 @@ easySetData({
 
 ```bash
 easySetData({
-  collection: 'anime/docId/*****',
+  collection: 'anime/*****/animeDetail',
   doc: {
     title: 'ナルト',
     Character: ['ナルト', 'サスケ', 'サクラ'],
+    id: '*****'
     }
 })
 ```
@@ -40,7 +40,7 @@ easySetData({
 ```bash
 {
   created_at: new Date(),
-  id: document id
+  id: doc Id
 }
 ```
 
