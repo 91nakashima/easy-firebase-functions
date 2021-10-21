@@ -1,5 +1,8 @@
 # インストール
 
+Nakashima Package Manager
+略して【npm】で入れます。
+
 ```bash
 npm install easy-firebase-functions
 ```
