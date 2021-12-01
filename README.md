@@ -7,6 +7,8 @@ Nakashima Package Manager
 npm install easy-firebase-functions
 ```
 
+※ firebase v8
+
 # 使い方
 
 登録と更新ができます。 doc に `id` を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。
@@ -23,7 +25,7 @@ easySetData({
 })
 ```
 
-サブコレクションの場合
+For subcollections
 
 ```bash
 easySetData({
@@ -33,6 +35,18 @@ easySetData({
     character: ['ナルト', 'サスケ', 'サクラ'],
     id: '*****'
     }
+})
+```
+
+情報の取得ができます。
+
+```bash
+const { easyGetData } = require('easy-firebase-functions')
+
+easyGetData('anime', {
+  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
+  orderBy: 'created_at'
+  limit: 99,
 })
 ```
 
