@@ -71,7 +71,7 @@ async function easyGetData (data, option = {}) {
   /** Path */
   let getData = null
 
-  collectionArray = data.collection.split('/')
+  collectionArray = data.split('/')
 
   collectionArray.map((path, index) => {
     if (index === 0) {
