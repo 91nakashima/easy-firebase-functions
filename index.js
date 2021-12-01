@@ -84,7 +84,7 @@ async function easyGetData (data, option = {}) {
   })
 
   // 一旦全て取得
-  if (collectionArray.length === 0 || collectionArray.length % 2 === 0) {
+  if (collectionArray.length === 1 || collectionArray.length % 2 === 1) {
     if (option.where) {
       if (!Array.isArray(option.where)) {
         return new Error('where is Array')
@@ -116,7 +116,7 @@ async function easyGetData (data, option = {}) {
     })
 
     return arr
-  } else if (collectionArray.length % 2 === 1) {
+  } else if (collectionArray.length % 2 === 0) {
     const res = await getData.get()
 
     return res.data()
