@@ -27,6 +27,9 @@ async function easySetDoc (data) {
   }
 
   collectionArray.map((path, index) => {
+    if (!path) {
+      return path
+    }
     if (index === 0) {
       addData = admin.firestore().collection(path)
     } else if (index % 2 === 1) {
@@ -74,6 +77,9 @@ async function easyGetData (data, option = {}) {
   collectionArray = data.split('/')
 
   collectionArray.map((path, index) => {
+    if (!path) {
+      return path
+    }
     if (index === 0) {
       getData = admin.firestore().collection(path)
     } else if (index % 2 === 1) {

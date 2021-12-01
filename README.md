@@ -9,6 +9,13 @@ npm install easy-firebase-functions
 
 ※ firebase v8
 
+# できること
+
+```bash
+const { easySetData } = require('easy-firebase-functions')
+const { easyGetData } = require('easy-firebase-functions')
+```
+
 # 使い方
 
 登録と更新ができます。 doc に `id` を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。
