@@ -14,7 +14,7 @@ async function easySetDoc (data) {
   /** Path */
   let addData = null
 
-  collectionArray = data.collection.split('/')
+  const collectionArray = data.collection.split('/')
 
   if (collectionArray.some(d => !d)) {
     return new Error()
@@ -74,7 +74,7 @@ async function easyGetData (data, option = {}) {
   /** Path */
   let getData = null
 
-  collectionArray = data.split('/')
+  const collectionArray = data.split('/')
 
   collectionArray.map((path, index) => {
     if (!path) {

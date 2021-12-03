@@ -50,7 +50,15 @@ easySetData({
 ```bash
 const { easyGetData } = require('easy-firebase-functions')
 
+/** @return {array} */
 easyGetData('anime', {
+  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
+  orderBy: 'created_at'
+  limit: 99,
+})
+
+/** @return {objrct} */
+easyGetData('anime/hugahuga', {
   where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
   orderBy: 'created_at'
   limit: 99,
