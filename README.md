@@ -89,4 +89,6 @@ easySetData({
   collection: '/anime',
   doc: {}
 })
+
+easyGetData('/anime/hugahuga')
 ```
