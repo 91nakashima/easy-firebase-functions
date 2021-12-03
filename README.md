@@ -58,11 +58,7 @@ easyGetData('anime', {
 })
 
 /** @return {objrct} */
-easyGetData('anime/hugahuga', {
-  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
-  orderBy: 'created_at'
-  limit: 99,
-})
+easyGetData('anime/hugahuga')
 ```
 
 # おまけ
