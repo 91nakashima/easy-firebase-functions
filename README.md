@@ -12,7 +12,7 @@ npm install easy-firebase-functions
 # できること
 
 ```bash
-const { easySetData } = require('easy-firebase-functions')
+const { easySetDoc } = require('easy-firebase-functions')
 const { easyGetData } = require('easy-firebase-functions')
 ```
 
@@ -21,9 +21,9 @@ const { easyGetData } = require('easy-firebase-functions')
 登録と更新ができます。 doc に `id` を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。
 
 ```bash
-const { easySetData } = require('easy-firebase-functions')
+const { easySetDoc } = require('easy-firebase-functions')
 
-easySetData({
+easySetDoc({
   collection: 'anime',
   doc: {
     title: 'ナルト',
@@ -35,7 +35,7 @@ easySetData({
 For subcollections
 
 ```bash
-easySetData({
+easySetDoc({
   collection: 'anime/*****/animeDetail',
   doc: {
     title: 'ナルト',
@@ -75,17 +75,17 @@ easyGetData('anime/hugahuga')
 # よくない例
 
 ```bash
-easySetData({
+easySetDoc({
   collection: 'anime/docId/',
   doc: {}
 })
 
-easySetData({
+easySetDoc({
   collection: 'anime/',
   doc: {}
 })
 
-easySetData({
+easySetDoc({
   collection: '/anime',
   doc: {}
 })
