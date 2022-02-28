@@ -1,43 +1,51 @@
+/** eslint-ignore */
 module.exports = {
-  // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
+  ignorePatterns: ['dist', 'node_modules'],
   root: true,
-
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    /** enables `<script setup>` */
+    'vue/setup-compiler-macros': true
+  },
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaVersion: 2018,
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2022,
     sourceType: 'module'
   },
-
-  env: {
-    browser: true
-  },
-
-  // Rules order is important, please avoid shuffling them
-  extends: ['plugin:vue/essential', 'standard'],
-
-  plugins: [],
-
-  globals: {
-    __statics: true,
-    process: true,
-    Capacitor: true,
-    chrome: true
-  },
-
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/base',
+    'plugin:vue/vue3-recommended',
+    'prettier'
+  ],
+  // add your custom rules here
   rules: {
-    'generator-star-spacing': 'off',
-    'arrow-parens': 'off',
-    'one-var': 'off',
-    'import/first': 'off',
-    'import/named': 'error',
-    'import/namespace': 'error',
-    'import/default': 'error',
-    'import/export': 'error',
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'prefer-promise-reject-errors': 'off',
-    'new-cap': 'off',
-    'no-undef': 'off'
+    /** enables `<script setup>` */
+    'vue/script-setup-uses-vars': 'error',
+    // other rules
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/array-type': ['error', { default: 'array' }],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    'vue/component-tags-order': [
+      'error',
+      { order: ['script', 'template', 'style'] }
+    ],
+    'vue/attribute-hyphenation': ['error', 'never', { ignore: [] }],
+    'vue/v-on-event-hyphenation': ['error', 'never'],
+
+    'no-irregular-whitespace': 'off',
+
+    '@typescript-eslint/explicit-module-boundary-types': 'off' // temporary during transition phase
+  },
+  globals: {
+    defineProps: 'readonly'
   }
 }

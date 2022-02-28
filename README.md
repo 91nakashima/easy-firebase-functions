@@ -7,13 +7,15 @@ Nakashima Package Manager
 npm install easy-firebase-functions
 ```
 
-※ firebase v8
+ts ^1.2.0<br>
+js 1.1.6
 
 # できること
 
 ```bash
 const { easySetDoc } = require('easy-firebase-functions')
 const { easyGetData } = require('easy-firebase-functions')
+const { easyDelete } = require('easy-firebase-functions')
 ```
 
 # 使い方
