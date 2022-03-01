@@ -1,18 +1,32 @@
+// {
+//   "compilerOptions": {
+//     "allowJs": true,
+//     "target": "esnext",
+//     "useDefineForClassFields": true,
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "strict": true,
+//     "jsx": "preserve",
+//     "sourceMap": true,
+//     "resolveJsonModule": true,
+//     "esModuleInterop": true,
+//     "isolatedModules": false,
+//     "lib": ["esnext", "dom"],
+//     "outDir": "./lib"
+//   },
+//   "include": ["src/**/*"]
+// }
 {
   "compilerOptions": {
-    "allowJs": true,
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
     "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": false,
-    "lib": ["esnext", "dom"],
-    "outDir": "./lib"
+    "strict": true,
+    "target": "es2017"
   },
-  "include": ["src/**/*"]
+  "compileOnSave": true,
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
