@@ -105,14 +105,12 @@ export const funSampleCode = functions
       ]
     }).catch((e: any) => console.log(e)) // -> Error
     console.log(huga) // ->
-    // [
-    // {
+    // [{
     // title: 'ナルト',
     // character: ['ナルト', 'サスケ', 'サクラ'],
     // id: 'skjdbvkjd6svosb3dv5sdvs',
     // created_at: Timestamp { _seconds: 1646120963, _nanoseconds: 790000000 }
-    // }
-    // ]
+    // }]
 
     await easyDelete('anime/uaIn0lyDOmKYlXyClhyb')
       .then((d: string) => console.log(d)) // -> 'ok'
