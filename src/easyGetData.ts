@@ -22,7 +22,7 @@ const isUseType = (r: any): r is CollectionReference | Query => {
 export async function easyGetData<T> (
   data: string,
   option: QueryOption = {}
-): Promise<T[] | T | Error> {
+): Promise<T[] | T | undefined | Error> {
   const collectionArray = data.split('/').filter(d => d)
   if (!collectionArray.length) return new Error()
 
@@ -79,6 +79,7 @@ export async function easyGetData<T> (
      */
     const arr: Array<T> = []
     res.forEach(el => {
+      if (!el.exists) return
       arr.push(el.data() as T)
     })
 
@@ -89,8 +90,7 @@ export async function easyGetData<T> (
       reference
         .get()
         .then(doc => {
-          if (!doc.exists) return rejects()
-          if (!doc.data()) return rejects()
+          if (!doc.exists) return resolve(undefined)
           resolve(doc.data() as T)
         })
         .catch(() => rejects())

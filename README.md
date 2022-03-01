@@ -77,3 +77,45 @@ easyGetData('anime/hugahuga')
 // delete document
 easyDelete('anime/hogehoge')
 ```
+
+# サンプルコード
+
+```js
+import * as functions from 'firebase-functions'
+import * as admin from 'firebase-admin'
+import { easySetDoc, easyGetData, easyDelete } from 'easy-firebase-functions'
+admin.initializeApp(functions.config().firebase)
+
+export const funSampleCode = functions
+  .region('asia-northeast1')
+  .https.onCall(async (request, response) => {
+    const getDocId = await easySetDoc({
+      collection: 'anime',
+      doc: {
+        title: 'ナルト',
+        character: ['ナルト', 'サスケ', 'サクラ']
+      }
+    }).catch((e: any) => console.log(e)) // -> Error
+    console.log(getDocId) // ->skjdbvkjd6svosb3dv5sdvs
+
+    const huga = await easyGetData('anime', {
+      where: [
+        ['title', '==', 'ナルト'],
+        ['character', 'array-contains', 'ナルト']
+      ]
+    }).catch((e: any) => console.log(e)) // -> Error
+    console.log(huga) // ->
+    // [
+    // {
+    // title: 'ナルト',
+    // character: ['ナルト', 'サスケ', 'サクラ'],
+    // id: 'skjdbvkjd6svosb3dv5sdvs',
+    // created_at: Timestamp { _seconds: 1646120963, _nanoseconds: 790000000 }
+    // }
+    // ]
+
+    await easyDelete('anime/uaIn0lyDOmKYlXyClhyb')
+      .then((d: string) => console.log(d)) // -> 'ok'
+      .catch((e: any) => console.log(e)) // -> Error
+  })
+```
