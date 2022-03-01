@@ -16,8 +16,20 @@ const { easySetDoc, easyGetData, easyDelete } = require('easy-firebase-functions
 // ts
 import { easySetDoc, easyGetData, easyDelete } from 'easy-firebase-functions'
 
-// type
+// Type
 import { EasySetDoc, QueryOption, WhereOption } from 'easy-firebase-functions'
+```
+
+# 機能
+
+作成したドキュメント(フィールド)に自動追加されます。
+
+```js
+{
+  id: string // document id
+  created_at: Date
+  updated_at?: Date // If it was an update
+}
 ```
 
 登録と更新ができます。 doc に `id` を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。
@@ -57,17 +69,6 @@ easyGetData('anime', {
 // get document data as an Object
 /** @return {Objrct} */
 easyGetData('anime/hugahuga')
-```
-
-# おまけ
-
-下記が作成したドキュメントに自動追加されます。
-
-```js
-{
-  created_at: new Date(),
-  id: doc Id
-}
 ```
 
 # よくない例
