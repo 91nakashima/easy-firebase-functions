@@ -7,21 +7,23 @@ Nakashima Package Manager
 npm install easy-firebase-functions
 ```
 
-# できること
+# 使い方
 
 ```bash
-const { easySetDoc } = require('easy-firebase-functions')
-const { easyGetData } = require('easy-firebase-functions')
-const { easyDelete } = require('easy-firebase-functions')
-```
+// js
+const { easySetDoc, easyGetData, easyDelete } = require('easy-firebase-functions')
 
-# 使い方
+// ts
+import { easySetDoc, easyGetData, easyDelete } from 'easy-firebase-functions'
+
+// type
+import { EasySetDoc, QueryOption, WhereOption } from 'easy-firebase-functions'
+```
 
 登録と更新ができます。 doc に `id` を追加すると、ドキュメント ID の指定・id が一致したドキュメントの更新を行えます。
 
 ```js
-const { easySetDoc } = require('easy-firebase-functions')
-
+// create
 easySetDoc({
   collection: 'anime',
   doc: {
@@ -29,9 +31,8 @@ easySetDoc({
     character: ['ナルト', 'サスケ', 'サクラ']
   }
 })
-```
 
-```js
+// update or create(add)
 easySetDoc({
   collection: 'anime/*****/animeDetail',
   doc: {
@@ -45,16 +46,16 @@ easySetDoc({
 情報の取得ができます。
 
 ```js
-const { easyGetData } = require('easy-firebase-functions')
-
-/** @return {array} */
+// get Collection data as an Array
+/** @return {array<T>} */
 easyGetData('anime', {
   where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
   orderBy: 'created_at'
   limit: 99,
 })
 
-/** @return {objrct} */
+// get document data as an Object
+/** @return {Objrct} */
 easyGetData('anime/hugahuga')
 ```
 
@@ -69,31 +70,29 @@ easyGetData('anime/hugahuga')
 }
 ```
 
-# Type 情報
-
-```js
-import { EasySetDoc, QueryOption, WhereOption } from 'easy-firebase-functions'
-```
-
 # よくない例
 
 Path の記述に関して、文字の始めや文字の終わりに`/`を記載するとエラーを返します。
 
 ```js
+/** @return {Error} */
 easySetDoc({
   collection: 'anime/docId/',
   doc: {}
 })
 
+/** @return {Error} */
 easySetDoc({
   collection: 'anime/',
   doc: {}
 })
 
+/** @return {Error} */
 easySetDoc({
   collection: '/anime',
   doc: {}
 })
 
+/** @return {Error} */
 easyGetData('/anime/hugahuga')
 ```
