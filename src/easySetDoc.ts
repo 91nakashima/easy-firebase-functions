@@ -13,17 +13,11 @@ export async function easySetDoc<T> (data: {
   collection: string
   doc: EasySetDoc & T
 }): Promise<string | Error> {
-  const collectionArray: Array<string> = data.collection.split('/')
-
-  if (collectionArray.some((d: string) => !d)) return new Error()
-
-  if (collectionArray.length % 2 === 0) {
-    if (collectionArray.length !== 1) return new Error()
-  }
+  const collectionArray = data.collection.split('/').filter(d => d)
+  if (!collectionArray.length) return new Error()
 
   let reference: CollectionReference | DocumentReference | null = null
-  for (let i = 0; i < 9; i++) {
-    if (!collectionArray[i]) break
+  for (let i = 0; i < collectionArray.length; i++) {
     if (i === 0) {
       reference = admin.firestore().collection(collectionArray[i])
     } else if (i % 2 === 1 && reference instanceof CollectionReference) {
@@ -33,7 +27,6 @@ export async function easySetDoc<T> (data: {
     }
   }
 
-  if (!reference) return new Error()
   if (!(reference instanceof CollectionReference)) return new Error()
 
   // idがある場合

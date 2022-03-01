@@ -9,11 +9,11 @@ import {
  * @params 'cities/LA'
  */
 export async function easyDelete (data: string): Promise<string | Error> {
-  const collectionArray = data.split('/')
-  let reference: CollectionReference | DocumentReference | null = null
+  const collectionArray = data.split('/').filter(d => d)
+  if (!collectionArray.length) return new Error()
 
-  for (let i = 0; i < 9; i++) {
-    if (!collectionArray[i]) break
+  let reference: CollectionReference | DocumentReference | null = null
+  for (let i = 0; i < collectionArray.length; i++) {
     if (i === 0) {
       reference = admin.firestore().collection(collectionArray[i])
     } else if (i % 2 === 1 && reference instanceof CollectionReference) {

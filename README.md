@@ -71,29 +71,9 @@ easyGetData('anime', {
 easyGetData('anime/hugahuga')
 ```
 
-# よくない例
-
-Path の記述に関して、文字の始めや文字の終わりに`/`を記載するとエラーを返します。
+情報の削除
 
 ```js
-/** @return {Error} */
-easySetDoc({
-  collection: 'anime/docId/',
-  doc: {}
-})
-
-/** @return {Error} */
-easySetDoc({
-  collection: 'anime/',
-  doc: {}
-})
-
-/** @return {Error} */
-easySetDoc({
-  collection: '/anime',
-  doc: {}
-})
-
-/** @return {Error} */
-easyGetData('/anime/hugahuga')
+// delete document
+easyDelete('anime/hogehoge')
 ```
