@@ -67,7 +67,7 @@ easyGetData('anime', {
 })
 
 // get document data as an Object
-/** @return {Objrct} */
+/** @return {Objrct | undefined} */
 easyGetData('anime/hugahuga')
 ```
 
