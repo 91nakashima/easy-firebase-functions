@@ -59,8 +59,6 @@ export async function easyGetData<T> (
    * https://firebase.google.com/docs/firestore/query-data/queries?hl=ja#simple_queries
    */
   if (option.where) {
-    if (!Array.isArray(option.where)) return new Error()
-
     option.where.map((w: WhereOption) => {
       if (!isUseType(reference)) return w
       reference = reference.where(w[0], w[1], w[2])
@@ -73,8 +71,11 @@ export async function easyGetData<T> (
    * https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=ja#order_and_limit_data
    */
   if (option.orderBy) {
-    if (!isUseType(reference)) return new Error()
-    reference = reference.orderBy(option.orderBy)
+    option.orderBy.map((w: string) => {
+      if (!isUseType(reference) || !w) return w
+      reference = reference.orderBy(w)
+      return w
+    })
   }
 
   /**

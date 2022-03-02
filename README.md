@@ -62,7 +62,7 @@ easySetDoc({
 /** @return {array<T>} */
 easyGetData('anime', {
   where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
-  orderBy: 'created_at'
+  orderBy: ['created_at']
   limit: 99,
 })
 
@@ -116,4 +116,28 @@ export const funSampleCode = functions
       .then((d: string) => console.log(d)) // -> 'ok'
       .catch((e: any) => console.log(e)) // -> Error
   })
+```
+
+# ！
+
+Version: 1.3.5
+
+```js
+/** @return {array<T>} */
+easyGetData('anime', {
+  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
+  orderBy: 'created_at'
+  limit: 99,
+})
+```
+
+Version: 1.4.0
+
+```js
+/** @return {array<T>} */
+easyGetData('anime', {
+  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
+  orderBy: ['created_at']
+  limit: 99,
+})
 ```

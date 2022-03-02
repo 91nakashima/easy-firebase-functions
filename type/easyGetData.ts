@@ -16,7 +16,7 @@ type WhereOption = [
 
 interface QueryOption {
   where?: Array<WhereOption>
-  orderBy?: string
+  orderBy?: Array<string>
   limit?: number
 }
 
