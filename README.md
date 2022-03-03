@@ -117,27 +117,3 @@ export const funSampleCode = functions
       .catch((e: any) => console.log(e)) // -> Error
   })
 ```
-
-# ！
-
-Version: 1.3.5
-
-```js
-/** @return {array<T>} */
-easyGetData('anime', {
-  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
-  orderBy: 'created_at'
-  limit: 99,
-})
-```
-
-Version: 1.4.0
-
-```js
-/** @return {array<T>} */
-easyGetData('anime', {
-  where: [['title', '==', 'ナルト'], ['character', 'array-contains', 'サスケ']],
-  orderBy: ['created_at']
-  limit: 99,
-})
-```
