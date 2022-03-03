@@ -130,10 +130,21 @@ npm i firebase-admin@latest
 npm i firebase-functions@latest
 ```
 
-checked
+checked↓(not recommended & easyDelete() cannot be used)
 
 ```json
 "dependencies": {
+    "easy-firebase-functions": "^1.1.6",
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.16.0",
+  },
+```
+
+checked↓
+
+```json
+"dependencies": {
+    "easy-firebase-functions": "^1.4.2",
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.18.1",
   },
