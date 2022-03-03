@@ -11,7 +11,7 @@ type WhereOption = [
     | 'in'
     | 'not-in'
   ),
-  string | number | boolean
+  string | number | boolean | Array<string>
 ]
 
 interface QueryOption {
