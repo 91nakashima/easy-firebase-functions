@@ -117,3 +117,24 @@ export const funSampleCode = functions
       .catch((e: any) => console.log(e)) // -> Error
   })
 ```
+
+# if you cannot use
+
+try update
+
+```bash
+npm i firebase-admin@latest
+```
+
+```bash
+npm i firebase-functions@latest
+```
+
+checked
+
+```json
+"dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.1",
+  },
+```
