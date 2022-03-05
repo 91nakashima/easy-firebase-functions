@@ -1,4 +1,4 @@
-# インストール
+# easy-firebase-functions(server side)
 
 Nakashima Package Manager
 略して【npm】で入れます。
