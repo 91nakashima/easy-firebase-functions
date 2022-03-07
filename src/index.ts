@@ -1,6 +1,6 @@
 // modules
 export { easySetDoc } from './easySetDoc'
-export { easyGetData } from './easyGetData'
+export { easyGetData, easyGetDoc, easyGetDocs } from './easyGetData'
 export { easyDelete } from './easyDelete'
 
 // type

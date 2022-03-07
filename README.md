@@ -9,12 +9,17 @@ npm install easy-firebase-functions
 
 # 使い方
 
-```bash
+```js
 // js
-const { easySetDoc, easyGetData, easyDelete } = require('easy-firebase-functions')
+const { easySetDoc } = require('easy-firebase-functions')
+const { easyGetData } = require('easy-firebase-functions')
+const { easyGetDoc, easyGetDocs } = require('easy-firebase-functions')
+const { easyDelDoc } = require('easy-firebase-functions')
 
 // ts
-import { easySetDoc, easyGetData, easyDelete } from 'easy-firebase-functions'
+import { easySetDoc } from 'easy-firebase-functions'
+import { easyGetData, easyGetDoc, easyGetDocs } from 'easy-firebase-functions'
+import { easyDelDoc } from 'easy-firebase-functions'
 
 // Type
 import { EasySetDoc, QueryOption, WhereOption } from 'easy-firebase-functions'
@@ -36,22 +41,16 @@ import { EasySetDoc, QueryOption, WhereOption } from 'easy-firebase-functions'
 
 ```js
 // create
-easySetDoc({
-  collection: 'anime',
-  doc: {
-    title: 'ナルト',
-    character: ['ナルト', 'サスケ', 'サクラ']
-  }
+easySetDoc('anime', {
+  title: 'ナルト',
+  character: ['ナルト', 'サスケ', 'サクラ']
 })
 
 // update or create(add)
-easySetDoc({
-  collection: 'anime/*****/animeDetail',
-  doc: {
-    title: 'ナルト',
-    character: ['ナルト', 'サスケ', 'サクラ'],
-    id: '*****'
-  }
+easySetDoc('anime/*****/animeDetail', {
+  title: 'ナルト',
+  character: ['ナルト', 'サスケ', 'サクラ'],
+  id: '*****'
 })
 ```
 
@@ -89,12 +88,9 @@ admin.initializeApp(functions.config().firebase)
 export const funSampleCode = functions
   .region('asia-northeast1')
   .https.onCall(async (request, response) => {
-    const getDocId = await easySetDoc({
-      collection: 'anime',
-      doc: {
-        title: 'ナルト',
-        character: ['ナルト', 'サスケ', 'サクラ']
-      }
+    const getDocId = await easySetDoc('anime', {
+      title: 'ナルト',
+      character: ['ナルト', 'サスケ', 'サクラ']
     }).catch((e: any) => console.log(e)) // -> Error
     console.log(getDocId) // ->skjdbvkjd6svosb3dv5sdvs
 

@@ -9,12 +9,12 @@ import { EasySetDoc } from '../type/EasySetDoc'
 /**
  * set doc
  */
-export async function easySetDoc<T> (data: {
-  collection: string
-  doc: EasySetDoc & T
-}): Promise<string | Error> {
-  const collectionArray = data.collection.split('/').filter(d => d)
-  if (!collectionArray.length) return new Error()
+export async function easySetDoc<T> (
+  path: string,
+  data: EasySetDoc & T
+): Promise<string> {
+  const collectionArray = path.split('/').filter(d => d)
+  if (!collectionArray.length) throw new Error()
 
   let reference: CollectionReference | DocumentReference | null = null
   for (let i = 0; i < collectionArray.length; i++) {
@@ -27,26 +27,26 @@ export async function easySetDoc<T> (data: {
     }
   }
 
-  if (!(reference instanceof CollectionReference)) return new Error()
+  if (!(reference instanceof CollectionReference)) throw new Error()
 
   // idがある場合
-  if (data.doc.id) {
-    const getData = await reference.doc(data.doc.id).get()
+  if (data.id) {
+    const getData = await reference.doc(data.id).get()
     if (getData.data()) {
       // 情報がある場合(updata)
-      data.doc.updated_at = new Date()
-      await reference.doc(data.doc.id).update(data.doc)
+      data.updated_at = new Date()
+      await reference.doc(data.id).update(data)
     } else {
       // 情報がない場合(create)
-      data.doc.created_at = new Date()
-      await reference.doc(data.doc.id).set(data.doc)
+      data.created_at = new Date()
+      await reference.doc(data.id).set(data)
     }
-    return data.doc.id
+    return data.id
   }
 
   // idがない場合(create)
-  data.doc.created_at = new Date()
-  const newDoc = await reference.add(data.doc)
+  data.created_at = new Date()
+  const newDoc = await reference.add(data)
   await reference.doc(newDoc.id).update({ id: newDoc.id })
   return newDoc.id
 }

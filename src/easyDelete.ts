@@ -8,9 +8,9 @@ import {
  * delete Doc
  * @params 'cities/LA'
  */
-export async function easyDelete (data: string): Promise<string | Error> {
+export async function easyDelete (data: string): Promise<string> {
   const collectionArray = data.split('/').filter(d => d)
-  if (!collectionArray.length) return new Error()
+  if (!collectionArray.length) throw new Error()
 
   let reference: CollectionReference | DocumentReference | null = null
   for (let i = 0; i < collectionArray.length; i++) {
