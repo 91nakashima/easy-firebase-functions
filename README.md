@@ -7,6 +7,10 @@ Nakashima Package Manager
 npm install easy-firebase-functions
 ```
 
+# 移行予定
+
+https://www.npmjs.com/package/@firebaseasy/functions
+
 # 使い方
 
 ```js
